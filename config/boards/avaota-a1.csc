@@ -1,10 +1,21 @@
+
+# config/boards/avaota-a1.csc  (mainline U-Boot variant)
 # Allwinner Cortex-A55 octa core 2/4GB RAM SoC USB3 USB-C 2x GbE LCD
 BOARD_NAME="Avaota A1"
 BOARD_VENDOR="allwinner"
-BOARDFAMILY="sun55iw3-syterkit"
-BOARD_MAINTAINER="chainsx"
+BOARDFAMILY="sun55iw3"                 # was sun55iw3-syterkit
+BOARD_MAINTAINER=""
 INTRODUCED="2024"
-KERNEL_TARGET="legacy"
+BOOTCONFIG="avaota-a1_defconfig"       # upstream U-Boot, needs v2025.10+
+OVERLAY_PREFIX="sun55i-t527"
+KERNEL_TARGET="edge"                   # mainline kernel, was legacy
+BOOT_FDT_FILE="allwinner/sun55i-t527-avaota-a1.dtb"
+IMAGE_PARTITION_TABLE="gpt"
+BOOTFS_TYPE="fat"
+BOOTSTART="1"
+BOOTSIZE="256"
+ROOTSTART="513"
+SRC_CMDLINE="console=ttyAS0,115200 loglevel=8 cma=64M"
 BOOT_FDT_FILE="allwinner/sun55i-t527-avaota-a1.dtb"
 SRC_EXTLINUX="yes"
 SRC_CMDLINE="earlycon=uart8250,mmio32,0x02500000 clk_ignore_unused initcall_debug=0 console=ttyAS0,115200 loglevel=8 cma=64M init=/sbin/init"
